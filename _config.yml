@@ -20,7 +20,7 @@ timezone: Asia/Shanghai
 
 title: 小小酱 # the main title
 
-tagline: 闹着玩呢- # it will display as the sub-title
+tagline: 闹着玩呢-0 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.

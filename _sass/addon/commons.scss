@@ -1232,7 +1232,8 @@ $btn-mb: 0.5rem;
   }
 }
 
-@media all and (width <= 768px) {
+// @media all and (width <= 768px) {
+@media all and (width <= 800px) {
   %full-width {
     max-width: 100%;
   }
@@ -1352,7 +1353,7 @@ $btn-mb: 0.5rem;
 } /* max-width: 849px */
 
 /* Phone & Pad */
-@media all and (width >= 577px) and (width <= 1199px) {
+@media all and (width >= 577px) and (width <= 1200px) {
   footer .d-flex > div {
     width: 312px;
   }
