@@ -1,6 +1,6 @@
 ---
 title: SpringCloud HelloWorld
-author: doudio
+author: author
 date: 2023-06-11
 categories: [drp, test]
 tags: [test]
