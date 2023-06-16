@@ -1248,7 +1248,7 @@ $btn-mb: 0.5rem;
 }
 
 /* hide sidebar and panel */
-@media all and (width <= 858px) {
+@media all and (width <= 900px) {
   @mixin slide($append: null) {
     $basic: transform 0.4s ease;
 
