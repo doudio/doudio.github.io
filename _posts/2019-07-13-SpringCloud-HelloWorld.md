@@ -1,10 +1,9 @@
 ---
-title: SpringCloud HelloWorld
-author: author
-date: 2023-06-11
-categories: [drp, test]
-tags: [test]
-render_with_liquid: false
+title: SpringCloud-HelloWorld
+author: doudio
+date: 2019-07-13
+categories: [SpringCloud]
+tags: [SpringCloud]
 ---
 
 > ### SpringCloud HelloWorld
