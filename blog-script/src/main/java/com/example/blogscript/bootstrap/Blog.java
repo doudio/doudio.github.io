@@ -71,7 +71,7 @@ public class Blog {
                 fileContent = StrUtil.replace(fileContent, link, StrUtil.replace(replace, mdLocalLink, githubLink));
             }
             builder.append(fileContent);
-            log.info(fileContent);
+            FileUtil.writeUtf8String(String.valueOf(builder), new File(blogConfig.getTargetDir(), fileName));
         });
     }
 

@@ -2,4 +2,4 @@ blog:
   localGithub: F:\github\note
 #  localGithub: F:\gitee\notebook
   imgPrefix: https://raw.githubusercontent.com/doudio/note/master/
-  targetDir: F:\github\note\doudio
+  targetDir: F:\github\doudio
