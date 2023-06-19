@@ -1,0 +1,4 @@
+blog:
+  localGithub: F:\github\note
+  imgPrefix: https://raw.githubusercontent.com/doudio/note/master/
+  targetDir: F:\github\note\doudio
