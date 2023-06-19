@@ -1,5 +1,5 @@
 # The Site Configuration
-
+# bundle exec jekyll s
 # Import the theme
 theme: jekyll-theme-chirpy
 
