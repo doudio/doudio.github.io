@@ -31,6 +31,8 @@ public class Blog {
             return file.isFile() && file.getName().endsWith(".md");
         });
         log.info("localGithubFile: {}, size: {}", JSONUtil.toJsonPrettyStr(localGithubFile), localGithubFile.size());
+        localGithubFile.stream().forEach(file -> {
+        });
     }
     
 
