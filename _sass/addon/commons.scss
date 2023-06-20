@@ -1247,8 +1247,11 @@ $btn-mb: 0.5rem;
   }
 }
 
-/* hide sidebar and panel */
+/* debug1001 hide sidebar and panel width <= 849px*/
 @media all and (width <= 849px) {
+  footer .d-flex > div {
+    width: 312px;
+  }
   @mixin slide($append: null) {
     $basic: transform 0.4s ease;
 
