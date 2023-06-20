@@ -1,7 +1,7 @@
 ---
 title: linux-tmux小窗口
 author: doudio
-date: 2019-06-02
+date: 2023-06-06
 categories: [Linux, centos]
 tags: [Linux, centos]
 ---

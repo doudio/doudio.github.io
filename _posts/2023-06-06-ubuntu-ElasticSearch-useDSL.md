@@ -1,7 +1,7 @@
 ---
 title: ubuntu-ElasticSearch-useDSL
 author: doudio
-date: 2019-07-06
+date: 2023-06-06
 categories: [ElasticSearch]
 tags: [ElasticSearch]
 ---

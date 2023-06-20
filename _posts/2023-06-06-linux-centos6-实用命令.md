@@ -1,7 +1,7 @@
 ---
 title: linux-centos6-实用命令
 author: doudio
-date: 2019-08-01
+date: 2023-06-06
 categories: [Linux, centos]
 tags: [Linux, centos]
 ---
