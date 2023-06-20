@@ -5,7 +5,7 @@ theme: jekyll-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
-# baseurl: "doudio.github.io"
+baseurl: "doudio.github.io"
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
@@ -27,7 +27,7 @@ description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-# url: "https://doudio.github.io"
+url: "https://doudio.github.io"
 
 github:
   username: doudio # change to your github username
@@ -82,6 +82,8 @@ avatar: "https://avatars.githubusercontent.com/u/43506652"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
+
+mermaid: true
 
 # comments:
 #   active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
