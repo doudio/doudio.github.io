@@ -7,9 +7,13 @@ webfonts: /assets/lib/fonts/main.css
 jquery:
   js: /assets/lib/jquery/jquery.min.js
 
+# bootstrap:
+#   css: /assets/lib/bootstrap/bootstrap.min.css
+#   js: /assets/lib/bootstrap/bootstrap.bundle.min.js
+
 bootstrap:
-  css: /assets/lib/bootstrap/bootstrap.min.css
-  js: /assets/lib/bootstrap/bootstrap.bundle.min.js
+  css: https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css
+  js: https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js
 
 toc:
   css: /assets/lib/tocbot/tocbot.min.css
