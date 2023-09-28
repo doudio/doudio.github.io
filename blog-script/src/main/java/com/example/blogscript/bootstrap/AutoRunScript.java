@@ -34,6 +34,8 @@ import java.util.stream.Collectors;
  * 2. gitee > copy > github 提交同步github
  * 3. 格式转换提交到doudio.io仓库
  * git.exe push --progress "origin" note-script:note-script
+ *
+ * F: &&
  */
 @Slf4j
 @Component
@@ -54,28 +56,28 @@ public class AutoRunScript {
         """;
 
     private static String GIT_PULL = """
-    F: && cd "%s" && git pull
+    cd "%s" && git pull
     """;
 
     private static String GIT_STATUS = """
-    F: && cd "%s" && git status
+    cd "%s" && git status
     """;
 
     private static String GIT_ADD = """
-    F: && cd "%s" && git ADD .
+    cd "%s" && git ADD .
     """;
 
     private static String GIT_COMMIT = """
-    F: && cd "%s" && git commit -m "%s"
+    cd "%s" && git commit -m "%s"
     """;
 
     private static String GIT_PUSH = """
-    F: && cd "%s" && git push
+    cd "%s" && git push
     """;
 
     @PostConstruct
     public void run() {
-        log.info("pull gitee: {}", RuntimeUtil.execForStr("cmd.exe", "/c", GIT_PULL.formatted(blogConfig.getLocalGitee())));
+        log.info("pull gitee: {} -> {}", blogConfig.getLocalGitee(), RuntimeUtil.execForStr("cmd.exe", "/c", GIT_PULL.formatted(blogConfig.getLocalGitee())));
 
         Arrays.stream(FileUtil.ls(blogConfig.getLocalGitee()))
                 .filter(itm -> !".git".equals(itm.getName()))
@@ -86,21 +88,21 @@ public class AutoRunScript {
                 });
 
         FileUtil.loopFiles(blogConfig.getLocalGithub()).stream()
-                .filter(file -> !file.toString().startsWith("F:\\github\\note\\.git"))
+                .filter(file -> !file.toString().contains(".git"))
                 .filter(file -> !file.toString().endsWith(".md"))
                 .filter(file -> !file.toString().endsWith(".jpg"))
                 .filter(file -> !file.toString().endsWith(".png"))
                 .filter(file -> !file.toString().endsWith(".gif"))
                 .forEach(itm -> {
-                    log.info(itm.toString());
+                    log.info("compressGithub: {} -> {}", blogConfig.getLocalGithub(), itm);
                     FileUtil.del(itm);
                 });
 
-        log.info("GIT_STATUS github: {}", RuntimeUtil.execForStr("cmd.exe", "/c", GIT_STATUS.formatted(blogConfig.getLocalGithub())));
-        log.info("GIT_ADD github: {}", RuntimeUtil.execForStr("cmd.exe", "/c", GIT_ADD.formatted(blogConfig.getLocalGithub())));
-        log.info("GIT_COMMIT github: {}", RuntimeUtil.execForStr("cmd.exe", "/c", GIT_COMMIT.formatted(blogConfig.getLocalGithub(), "script syn")));
-        log.info("GIT_PULL github: {}", RuntimeUtil.execForStr("cmd.exe", "/c", GIT_PULL.formatted(blogConfig.getLocalGithub())));
-        log.info("GIT_PUSH github: {}", RuntimeUtil.execForStr("cmd.exe", "/c", GIT_PUSH.formatted(blogConfig.getLocalGithub())));
+        log.info("GIT_STATUS github: {} -> {}", blogConfig.getLocalGithub(), RuntimeUtil.execForStr("cmd.exe", "/c", GIT_STATUS.formatted(blogConfig.getLocalGithub())));
+        log.info("GIT_ADD github: {} -> {}", blogConfig.getLocalGithub(), RuntimeUtil.execForStr("cmd.exe", "/c", GIT_ADD.formatted(blogConfig.getLocalGithub())));
+        log.info("GIT_COMMIT github: {} -> {}", blogConfig.getLocalGithub(), RuntimeUtil.execForStr("cmd.exe", "/c", GIT_COMMIT.formatted(blogConfig.getLocalGithub(), "script syn")));
+        log.info("GIT_PULL github: {} -> {}", blogConfig.getLocalGithub(), RuntimeUtil.execForStr("cmd.exe", "/c", GIT_PULL.formatted(blogConfig.getLocalGithub())));
+        log.info("GIT_PUSH github: {} -> {}", blogConfig.getLocalGithub(), RuntimeUtil.execForStr("cmd.exe", "/c", GIT_PUSH.formatted(blogConfig.getLocalGithub())));
 
         FileUtil.loopFiles(blogConfig.getLocalGithub(), file -> file.isFile() && file.getName().endsWith(".md")).forEach(file -> {
             // 文件名/文件名上的日期/文件名不带后缀字符的
@@ -112,8 +114,6 @@ public class AutoRunScript {
             String fileDisk = StrUtil.subSuf(file.toString(), blogConfig.getLocalGithub().length() + 1);
             String dir = StrUtil.replace(fileDisk, "\\" + fileName, "");
             String categories = "[" + StrUtil.replace(dir,"\\", ", ") + "]";
-
-            /*log.info("fileName: {}, dir: {}, categories: {}, date: {}", title, dir, categories, date);*/
 
             String fileContent = FileUtil.readUtf8String(file);
             StringBuilder builder = new StringBuilder();
@@ -129,11 +129,11 @@ public class AutoRunScript {
             FileUtil.writeUtf8String(String.valueOf(builder), new File(blogConfig.getTargetDir(), fileName));
         });
 
-        log.info("GIT_STATUS github: {}", RuntimeUtil.execForStr("cmd.exe", "/c", GIT_STATUS.formatted(blogConfig.getGithubBlog())));
-        log.info("GIT_ADD github: {}", RuntimeUtil.execForStr("cmd.exe", "/c", GIT_ADD.formatted(blogConfig.getGithubBlog())));
-        log.info("GIT_COMMIT github: {}", RuntimeUtil.execForStr("cmd.exe", "/c", GIT_COMMIT.formatted(blogConfig.getGithubBlog(), "script syn")));
-        log.info("GIT_PULL github: {}", RuntimeUtil.execForStr("cmd.exe", "/c", GIT_PULL.formatted(blogConfig.getGithubBlog())));
-        log.info("GIT_PUSH github: {}", RuntimeUtil.execForStr("cmd.exe", "/c", GIT_PUSH.formatted(blogConfig.getGithubBlog())));
+        log.info("GIT_STATUS github: {} -> {}", blogConfig.getGithubBlog(), RuntimeUtil.execForStr("cmd.exe", "/c", GIT_STATUS.formatted(blogConfig.getGithubBlog())));
+        log.info("GIT_ADD github: {} -> {}", blogConfig.getGithubBlog(), RuntimeUtil.execForStr("cmd.exe", "/c", GIT_ADD.formatted(blogConfig.getGithubBlog())));
+        log.info("GIT_COMMIT github: {} -> {}", blogConfig.getGithubBlog(), RuntimeUtil.execForStr("cmd.exe", "/c", GIT_COMMIT.formatted(blogConfig.getGithubBlog(), "script syn")));
+        log.info("GIT_PULL github: {} -> {}", blogConfig.getGithubBlog(), RuntimeUtil.execForStr("cmd.exe", "/c", GIT_PULL.formatted(blogConfig.getGithubBlog())));
+        log.info("GIT_PUSH github: {} -> {}", blogConfig.getGithubBlog(), RuntimeUtil.execForStr("cmd.exe", "/c", GIT_PUSH.formatted(blogConfig.getGithubBlog())));
     }
 
 }
