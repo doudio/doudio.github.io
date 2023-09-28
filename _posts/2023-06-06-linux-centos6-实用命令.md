@@ -168,6 +168,14 @@ jstack <pid> > <pid>.log
 jmap -dump:format=b,file=<pid>.hprof <pid>
 
 jmap -histo <pid> | more
+
+>> 关于抓java的dump中live参数
+我们经常需要查看内存中的一些变量的值，来定位生产环境的问题。一般会使用jmap来抓dump，在抓dump的时候，我们会把堆全部扒下来：
+jmap -dump:format=b,file=path pid
+然后会生成一个几百M的包，让运维人员从生产环境拖下来再传给你，然后你用jvisualvm打开，等你打开这个dump的时候，看到你想看的内存的时候，基本上半天时间已经过去了。
+其实我们丢了一个很重要的参数：live,这个参数表示我们需要抓取目前在生命周期内的内存对象，也就是说GC收不走的对象，然后我们绝大部分情况下，需要的看的就是这些内存。如果我们把这个参数加上：
+jmap -dump:live,format=b,file=path pid
+那么抓下来的dump会减少一个数量级，在几十M左右，这样我们传输，打开这个dump的时间将大大减少，为解决故障赢取了宝贵的时间。
 ```
 
 > .hprof 内存分析工具
