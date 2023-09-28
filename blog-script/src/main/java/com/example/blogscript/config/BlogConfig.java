@@ -15,7 +15,9 @@ import org.springframework.stereotype.Component;
 public class BlogConfig {
 
     private String localGithub;
+    private String localGitee;
     private String imgPrefix;
+    private String githubBlog;
     private String targetDir;
 
 }

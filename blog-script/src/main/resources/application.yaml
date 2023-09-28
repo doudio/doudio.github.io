@@ -1,5 +1,6 @@
 blog:
-  localGithub: F:\github\note
-#  localGithub: F:\gitee\notebook
+  localGithub: F:/github/note
+  localGitee: F:/gitee/notebook
   imgPrefix: https://raw.githubusercontent.com/doudio/note/master/
-  targetDir: F:\github\doudio
+  githubBlog: F:/github/doudio.github.io
+  targetDir: ${blog.githubBlog}/_posts
