@@ -33,6 +33,7 @@ import java.util.stream.Collectors;
  * 1. 跟新gitee仓库
  * 2. gitee > copy > github 提交同步github
  * 3. 格式转换提交到doudio.io仓库
+ * git.exe push --progress "origin" note-script:note-script
  */
 @Slf4j
 @Component
